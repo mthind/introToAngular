@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="nameApp">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Angular JS Examples</title>
+
+<script src="js/angular.min.js"></script>
+<script>
+	var nameApp = angular.module('nameApp', []); // declare the module
+	nameApp.controller('NameCtrl', function($scope) {
+		$scope.names = [ 'Larry', 'Curly', 'Moe' ];
+		
+		$scope.addName = function(){
+			$scope.names.push($scope.enteredName);
+			$scope.enteredName = '';
+		};
+	});
+</script>
+</head>
+<body ng-controller="NameCtrl">
+	<ul>
+		<li ng-repeat="name in names">{{name}}</li>
+	</ul>
+	<form ng-submit="addName()">
+		<input type="text" ng-model="enteredName"> <input
+			type="submit" value="add">
+	</form>
+</body>
+</html>
